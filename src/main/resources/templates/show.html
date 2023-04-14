@@ -21,6 +21,15 @@
 
 <p th:text="${country.getPopulation()}">VALUE</p>
 
+<form th:action="@{/{id}(id=${country.id})}" method="POST">
+    <input type="hidden" name="_method" value="DELETE"/>
+    <input type="submit" value="Delete"/>
+</form>
+
+<form th:action="@{'/' + ${country.id} + '/edit'}" method="GET">
+    <input type="submit" value="Edit"/>
+</form>
+
 </body>
 
 </html>

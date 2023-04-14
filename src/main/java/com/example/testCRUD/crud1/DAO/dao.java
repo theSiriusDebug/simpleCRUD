@@ -18,7 +18,7 @@ public class dao {
         });
     }
 
-    public Country show(int id){
+    public Country show(int id) {
         Config config = new Config();
         String sql = "SELECT * FROM countries WHERE id=?";
         return config.jdbcTemplate().queryForObject(sql, new Object[]{id}, (rs, rowNum) -> {
@@ -31,5 +31,16 @@ public class dao {
             test.setPopulation(rs.getInt("population"));
             return test;
         });
+    }
+    public void delete(int id){
+        Config config = new Config();
+        String sql = "DELETE FROM countries WHERE id=?";
+        config.jdbcTemplate().update(sql, id);
+    }
+
+    public void update(int id, Country updatedPerson) {
+        Config config = new Config();
+        config.jdbcTemplate().update("UPDATE countries SET name=?, area=?, capital=?, population=?, gdp=? WHERE id=?",
+                updatedPerson.getName(), updatedPerson.getArea(), updatedPerson.getCapital(), updatedPerson.getPopulation(), updatedPerson.getGdp(), id);
     }
 }
