@@ -3,9 +3,11 @@ package com.example.testCRUD.crud1.DAO;
 import com.example.testCRUD.crud1.Configuration.Config;
 import com.example.testCRUD.crud1.Models.Country;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
-@Component
+@Repository
 public class dao {
     public List<Country> index() {
         Config config = new Config();
@@ -42,5 +44,10 @@ public class dao {
         Config config = new Config();
         config.jdbcTemplate().update("UPDATE countries SET name=?, area=?, capital=?, population=?, gdp=? WHERE id=?",
                 updatedPerson.getName(), updatedPerson.getArea(), updatedPerson.getCapital(), updatedPerson.getPopulation(), updatedPerson.getGdp(), id);
+    }
+    public void create(Country newCountry) {
+        Config config = new Config();
+        String sql = "INSERT INTO countries (name, area, capital, population, gdp) VALUES (?, ?, ?, ?, ?)";
+        config.jdbcTemplate().update(sql, newCountry.getName(), newCountry.getArea(), newCountry.getCapital(), newCountry.getPopulation(), newCountry.getGdp());
     }
 }

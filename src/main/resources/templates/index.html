@@ -1,24 +1,49 @@
-    <!DOCTYPE html>
-    <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
 
-    <div th:each="country : ${listOfCountry}">
-        <a th:href="@{/{id}(id=${country.getId()})}"
-           th:text="${country.getName()}">user</a>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <h2>List of Countries:</h2>
+            <div th:each="man : ${service}">
+                <a class="d-block" th:href="@{/{id}(id=${man.getId()})}"
+                   th:text="${man.getName()}">user</a>
+            </div>
+        </div>
     </div>
 
-    <input id="ID" name="ID">
-    <a href="#" onclick="redirectToId()">id</a>
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="ID">Enter Country ID:</label>
+                <input type="text" class="form-control" id="ID" name="ID">
+            </div>
+        </div>
 
-    <script>
-    function redirectToId() {
-        var id = document.getElementById("ID").value;
-        window.location.href = "/" + id;
-    }
-    </script>
-    </body>
-    </html>
+        <div class="col-md-4">
+            <button class="btn btn-primary" onclick="redirectToId()">Go to Country</button>
+        </div>
+
+        <div class="col-md-4">
+            <a href="/new" class="btn btn-success">New Country</a>
+        </div>
+    </div>
+</div>
+
+<script>
+function redirectToId() {
+    var id = document.getElementById("ID").value;
+    window.location.href = "/" + id;
+}
+</script>
+
+</body>
+</html>

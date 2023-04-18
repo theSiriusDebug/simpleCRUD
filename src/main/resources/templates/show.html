@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
 
+<head>
     <meta charset="UTF-8">
     <title>Title</title>
-
 </head>
 
 <body>
 
-<p th:text="${country.getName()}">VALUE</p>
+<h1>Country Info:</h1>
 
-<p th:text="${country.getId()}">VALUE</p>
+<p><strong>Name: </strong><span th:text="${man.getName()}"></span></p>
 
-<p th:text="${country.getCapital()}">VALUE</p>
+<p><strong>ID: </strong><span th:text="${man.getId()}"></span></p>
 
-<p th:text="${country.getArea()}">VALUE</p>
+<p><strong>Capital: </strong><span th:text="${man.getCapital()}"></span></p>
 
-<p th:text="${country.getGdp()}">VALUE</p>
+<p><strong>Area: </strong><span th:text="${man.getArea()}"></span></p>
 
-<p th:text="${country.getPopulation()}">VALUE</p>
+<p><strong>GDP: </strong><span th:text="${man.getGdp()}"></span></p>
 
-<form th:action="@{/{id}(id=${country.id})}" method="POST">
-    <input type="hidden" name="_method" value="DELETE"/>
-    <input type="submit" value="Delete"/>
+<p><strong>Population: </strong><span th:text="${man.getPopulation()}"></span></p>
+
+<form th:action="@{/{id}(id=${man.id})}" method="POST">
+    <input type="hidden" name="_method" value="DELETE" />
+    <input type="submit" value="Delete" />
 </form>
 
-<form th:action="@{'/' + ${country.id} + '/edit'}" method="GET">
-    <input type="submit" value="Edit"/>
+<form th:action="@{'/' + ${man.id} + '/edit'}" method="GET">
+    <input type="submit" value="Edit" />
 </form>
 
 </body>
