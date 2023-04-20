@@ -11,29 +11,17 @@
 
 <div class="container">
     <div class="row mt-5">
-        <div class="col">
+        <div class="col-md-9">
             <h2>List of Countries:</h2>
-            <div th:each="man : ${service}">
-                <a class="d-block" th:href="@{/{id}(id=${man.getId()})}"
-                   th:text="${man.getName()}">user</a>
-            </div>
+            <div th:each="man : ${service}"> <a class="d-block" th:href="@{/{id}(id=${man.getId()})}" th:text="${man.getName()}">user</a> </div>
         </div>
-    </div>
-
-    <div class="row mt-5">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="form-group">
                 <label for="ID">Enter Country ID:</label>
                 <input type="text" class="form-control" id="ID" name="ID">
             </div>
-        </div>
-
-        <div class="col-md-4">
-            <button class="btn btn-primary" onclick="redirectToId()">Go to Country</button>
-        </div>
-
-        <div class="col-md-4">
-            <a href="/new" class="btn btn-success">New Country</a>
+            <button class="btn btn-primary btn-block" onclick="redirectToId()">Go to Country</button>
+            <a href="/new" class="btn btn-success btn-block mt-2">New Country</a>
         </div>
     </div>
 </div>

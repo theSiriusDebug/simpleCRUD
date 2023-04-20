@@ -3,33 +3,61 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Country Info</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 </head>
 
 <body>
 
-<h1>Country Info:</h1>
+<div class="container mt-5">
+    <h1 class="mb-4">Country Info:</h1>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <th>Name:</th>
+                <td th:text="${man.getName()}"></td>
+            </tr>
+            <tr>
+                <th>ID:</th>
+                <td th:text="${man.getId()}"></td>
+            </tr>
+            <tr>
+                <th>Capital:</th>
+                <td th:text="${man.getCapital()}"></td>
+            </tr>
+            <tr>
+                <th>Area:</th>
+                <td th:text="${man.getArea()}"></td>
+            </tr>
+            <tr>
+                <th>GDP:</th>
+                <td th:text="${man.getGdp()}"></td>
+            </tr>
+            <tr>
+                <th>Population:</th>
+                <td th:text="${man.getPopulation()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-<p><strong>Name: </strong><span th:text="${man.getName()}"></span></p>
-
-<p><strong>ID: </strong><span th:text="${man.getId()}"></span></p>
-
-<p><strong>Capital: </strong><span th:text="${man.getCapital()}"></span></p>
-
-<p><strong>Area: </strong><span th:text="${man.getArea()}"></span></p>
-
-<p><strong>GDP: </strong><span th:text="${man.getGdp()}"></span></p>
-
-<p><strong>Population: </strong><span th:text="${man.getPopulation()}"></span></p>
-
-<form th:action="@{/{id}(id=${man.id})}" method="POST">
-    <input type="hidden" name="_method" value="DELETE" />
-    <input type="submit" value="Delete" />
-</form>
-
-<form th:action="@{'/' + ${man.id} + '/edit'}" method="GET">
-    <input type="submit" value="Edit" />
-</form>
+    <div class="row">
+        <div class="col-sm-6">
+            <form th:action="@{/{id}(id=${man.id})}" method="POST">
+                <input type="hidden" name="_method" value="DELETE" />
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+        <div class="col-sm-6 text-right">
+            <form th:action="@{'/' + ${man.id} + '/edit'}" method="GET">
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 </body>
 

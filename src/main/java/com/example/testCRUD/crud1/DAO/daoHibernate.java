@@ -27,4 +27,19 @@ public class daoHibernate {
         Country country = session.get(Country.class, id);
         session.delete(country);
     }
+    public void save(Country country){
+        Session session = manager.unwrap(Session.class);
+        session.saveOrUpdate(country);
+    }
+    public void update(int id, Country updatedCountry){
+        Session session = manager.unwrap(Session.class);
+        Country country = session.get(Country.class, id);
+        country.setName(updatedCountry.getName());
+        country.setArea(updatedCountry.getArea());
+        country.setCapital(updatedCountry.getCapital());
+        country.setPopulation(updatedCountry.getPopulation());
+        country.setGdp(updatedCountry.getGdp());
+        session.saveOrUpdate(country);
+    }
+
 }
