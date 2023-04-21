@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class service {
     @Autowired
-    private com.example.testCRUD.crud1.DAO.daoHibernate daoHibernate;
+    private daoHibernate daoHibernate;
     @Transactional
     public List<Country> index(){
         return daoHibernate.index();

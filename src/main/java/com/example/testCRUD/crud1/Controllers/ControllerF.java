@@ -5,12 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import com.example.testCRUD.crud1.Service.service;
 
 @org.springframework.stereotype.Controller
 public class ControllerF {
 
     @Autowired
-    private com.example.testCRUD.crud1.Service.service service;
+    private service service;
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("service", service.index());
@@ -46,7 +47,7 @@ public class ControllerF {
 
     @PatchMapping("/{id}")
     public String update(@PathVariable("id") int id, @ModelAttribute("man")
-                         Country updatedCountry, BindingResult bindingResult) {
+    Country updatedCountry, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "edit";
         }
